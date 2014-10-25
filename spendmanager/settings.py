@@ -36,6 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'spendmanager.apps.profiles',
+    'spendmanager.apps.dashboard',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -64,7 +66,7 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'spend',
+        'NAME': 'spenid',
         'USER': 'postgres',
         'PASSWORD': 'chipi',
         'HOST': 'localhost',
