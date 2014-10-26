@@ -36,6 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'spendmanager.apps.profiles',
+    'spendmanager.apps.dashboard',
 )
 
 MIDDLEWARE_CLASSES = (
