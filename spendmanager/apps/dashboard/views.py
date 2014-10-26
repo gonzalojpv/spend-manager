@@ -8,6 +8,8 @@ from spendmanager.libs.bbva.api import APIS
 # Create your views here.
 
 def categories(request):
+    api = APIS()
+    api.request()
     #qparams = {}
     #parqparams =  urllib.parse.urlencode(qparams)
 
