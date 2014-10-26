@@ -1,18 +1,24 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  
+
+    <meta charset=UTF-8>
+    <link rel="stylesheet" type="text/css" href="../../static/css/flat-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/vendor/bootstrap.min.css">
     <title>Layout</title>
     
   </head>
   <body>
     {% include "shared/_header.html" %}
-
     <div id="name" class="container">
       {% block content %} {% endblock %}
     </div>
-
     {% include "shared/_footer.html"  %}
+    <!--[if lt IE 9] -->
+      <script src="../../static/js/vendor/html5shiv.js"></script>
+      <script src="../../static/js/vendor/respond.min.js"></script>    
+    <!--[endif] -->
+    <script src="../../static/js/vendor/jquery.min.js"></script>
+    <script src="../../static/js/flat-ui.min.js"></script>
   </body>
 </html>
