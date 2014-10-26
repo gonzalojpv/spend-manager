@@ -72,8 +72,8 @@ DATABASES = {
         'USER': 'xvqjgevagfeacs',
         'PASSWORD': 'FOlm4Dm3kwc4m5HPsxLDqCqqWD',
        # 'PASSWORD': 'chipi',
-        'HOST': 'localhost',
-        'PORT': '',
+        'HOST': 'ec2-54-83-204-104.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
