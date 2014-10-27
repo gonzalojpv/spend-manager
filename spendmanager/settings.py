@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
+PROJECT_PATH = os.path.join(BASE_DIR, os.pardir)
+PROJECT_PATH = os.path.abspath(PROJECT_PATH)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -54,10 +55,17 @@ ROOT_URLCONF = 'spendmanager.urls'
 
 WSGI_APPLICATION = 'spendmanager.wsgi.application'
 
-TEMPLATE_DIRS = (
-        'templates',
-        'templatetags'
-        )
+STATIC_PATH = os.path.join(PROJECT_PATH, 'spendmanager','static')
+
+# Additional locations of static files
+STATICFILES_DIRS = (
+        # Put strings here, like "/home/html/static" or "C:/www/django/static".
+        # Always use forward slashes, even on Windows.
+        # Don't forget to use absolute paths, not relative paths.
+        STATIC_PATH,
+    )
+TEMPLATE_DIRS = ('templates',)
+TEMPLATE_TAGS = ('templatetags.tags_html',)
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 

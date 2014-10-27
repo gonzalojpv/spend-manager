@@ -5,7 +5,7 @@ register = template.Library()
 
 @register.simple_tag
 def css_include_tag(css):
-	return "%s%s%s" % (settings.STATIC_URL, 'stylesheets/', css)
+	return "%s%s%s" % (settings.STATIC_URL, 'css/', css)
 
 @register.simple_tag
 def javascript_include_tag(js):
