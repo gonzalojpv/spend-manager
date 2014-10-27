@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
+PROJECT_PATH = os.path.join(BASE_DIR, os.pardir)
+PROJECT_PATH = os.path.abspath(PROJECT_PATH)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -54,10 +55,17 @@ ROOT_URLCONF = 'spendmanager.urls'
 
 WSGI_APPLICATION = 'spendmanager.wsgi.application'
 
-TEMPLATE_DIRS = (
-        'templates',
-        'templatetags'
-        )
+STATIC_PATH = os.path.join(PROJECT_PATH, 'spendmanager','static')
+
+# Additional locations of static files
+STATICFILES_DIRS = (
+        # Put strings here, like "/home/html/static" or "C:/www/django/static".
+        # Always use forward slashes, even on Windows.
+        # Don't forget to use absolute paths, not relative paths.
+        STATIC_PATH,
+    )
+TEMPLATE_DIRS = ('templates',)
+TEMPLATE_TAGS = ('templatetags.tags_html',)
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -66,14 +74,16 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        #'NAME': 'spend',
-        'NAME': 'd30epu8vo4sv6b',
-        #'USER': 'postgres',
-        'USER': 'xvqjgevagfeacs',
-        'PASSWORD': 'FOlm4Dm3kwc4m5HPsxLDqCqqWD',
-       # 'PASSWORD': 'chipi',
-        'HOST': 'ec2-54-83-204-104.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'NAME': 'spend',
+        #'NAME': 'd30epu8vo4sv6b',
+        'USER': 'postgres',
+        #'USER': 'xvqjgevagfeacs',
+        #'PASSWORD': 'FOlm4Dm3kwc4m5HPsxLDqCqqWD',
+        'PASSWORD': 'chipi',
+        #'HOST': 'ec2-54-83-204-104.compute-1.amazonaws.com',
+        #'PORT': '5432',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 

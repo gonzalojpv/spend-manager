@@ -27,5 +27,5 @@ class APIS(object):
         conn.request(self.method, self.service_name, None, self.headers)
         r = conn.getresponse()
         print(r.status)
-        print(r.read)
+        print(r.read())
 
