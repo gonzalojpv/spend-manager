@@ -3,14 +3,15 @@ import http.client
 import base64
 
 class APIS(object):
-    def __init__(self):        
+    def __init__(self, service_name = False, params = {}, method = 'GET'):        
         self.auth = ""
         self.url = "apis.bbvabancomer.com"
         self.headers = {}
-        self.params = {}
-        self.service_name = "/datathon/info/merchants_categories"
-        self.method = "GET"
+        self.params = params
+        self.service_name = service_name
+        self.method = method
         self.header()
+        self.response = []
 
     def header(self):
         self.headers = {
@@ -27,5 +28,8 @@ class APIS(object):
         conn.request(self.method, self.service_name, None, self.headers)
         r = conn.getresponse()
         print(r.status)
-        print(r.read())
+        if int(r.status) == 200:
+            self.response = r.read()
+        else:
+            print("Error")
 
