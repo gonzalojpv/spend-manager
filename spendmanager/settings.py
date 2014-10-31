@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'spendmanager.apps.profiles',
     'spendmanager.apps.dashboard',
+    'spendmanager.apps.zipcode',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -69,23 +70,38 @@ TEMPLATE_TAGS = ('templatetags.tags_html',)
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'spend',
-        #'NAME': 'd30epu8vo4sv6b',
-        'USER': 'postgres',
-        #'USER': 'xvqjgevagfeacs',
-        #'PASSWORD': 'FOlm4Dm3kwc4m5HPsxLDqCqqWD',
-        'PASSWORD': 'chipi',
-        #'HOST': 'ec2-54-83-204-104.compute-1.amazonaws.com',
-        #'PORT': '5432',
-        'HOST': 'localhost',
-        'PORT': '',
+_enviroment = 'dev'
+
+if _enviroment == 'dev':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'spend',
+            'USER': 'postgres',
+            'PASSWORD': 'chipi',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
     }
-}
+
+elif _enviroment =='prod':
+    DATABASES = {
+            'default': {
+                 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                 'NAME': 'd30epu8vo4sv6b',
+                 'USER': 'xvqjgevagfeacs',
+                 'PASSWORD': 'FOlm4Dm3kwc4m5HPsxLDqCqqWD',
+                 'HOST': 'ec2-54-83-204-104.compute-1.amazonaws.com',
+                 'PORT': '5432',
+                }
+            }
+elif _enviroment == 'local':
+    DATABASES = {
+            'default': {
+                    'ENGINE': 'django.db.backends.sqlite3',
+                    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+                }
+            }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

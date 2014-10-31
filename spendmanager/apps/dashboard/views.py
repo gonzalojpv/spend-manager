@@ -1,28 +1,22 @@
 from django.shortcuts import render
 from django.shortcuts import render_to_response
 from spendmanager.libs.bbva.api import APIS
-#import urllib
-#import http.client
-#import base64
+from django.http import HttpResponse
+import json
 
 # Create your views here.
 
 def categories(request):
-    api = APIS()
+    api = APIS(service_name = "/datathon/info/merchants_categories")
     api.request()
-    #qparams = {}
-    #parqparams =  urllib.parse.urlencode(qparams)
+    return HttpResponse(api.response, content_type='application/json')
 
-    #conn = http.client.HTTPSConnection('apis.bbvabancomer.com')
+def zipcodes(request):
+    api = APIS(service_name = "/datathon/info/zipcodes")
+    api.request()
+    return HttpResponse(api.response, content_type='application/json')
 
-    #headers = {}
-    #headers['Accept'] = "application/json"
-    #headers['Content-Type'] = "application/json"
-    #headers['Accept-Language'] = 'ES'
-    #headers['Authorization'] = "Basic YXBwLmJidmEuc3BlbmQtbWFuYWdlcjplMTc1ZTI2NWI2NDhmYWY2MGMxOTI0YmE5Mjk0YTQ4MGU5MTUyYjVi" 
-
-    #conn.request('GET', '/datathon/info/merchants_categories', None,headers)
-    #r = conn.getresponse()
-    #print(r.status)
-    #print(r.read())
-    return render_to_response('dashboard/index.html')
+def tiles(request):
+    api = APIS(service_name = "/datathon/info/tiles")
+    api.request()
+    return HttpResponse(api.response, content_type='application/json')
