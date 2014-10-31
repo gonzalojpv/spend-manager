@@ -1,6 +1,7 @@
 import urllib
 import http.client
 import base64
+import json
 
 class APIS(object):
     def __init__(self, service_name = False, params = {}, method = 'GET'):        
@@ -16,7 +17,7 @@ class APIS(object):
     def header(self):
         self.headers = {
             'Accept': 'application/json',
-            'Content': 'application/json',
+            'Content-Type': 'application/json',
             'Accept-Language': 'ES',
             'Authorization': 'Basic YXBwLmJidmEuc3BlbmQtbWFuYWdlcjplMTc1ZTI2NWI2NDhmYWY2MGMxOTI0YmE5Mjk0YTQ4MGU5MTUyYjVi',            
         }
@@ -24,12 +25,19 @@ class APIS(object):
     def request(self):
         params = urllib.parse.urlencode(self.params)
         conn = http.client.HTTPSConnection(self.url)
+        url = self.service_name +"?%s"%params
 
-        conn.request(self.method, self.service_name, None, self.headers)
+        conn.request(self.method, url, None, self.headers)
+        
         r = conn.getresponse()
         print(r.status)
+
         if int(r.status) == 200:
             self.response = r.read()
+            self.convert_json()
         else:
-            print("Error")
+            print("Error!")
 
+    def convert_json(self):
+        response_json = json.loads(self.response.decode('utf-8'))
+        self.response = json.dumps(response_json)

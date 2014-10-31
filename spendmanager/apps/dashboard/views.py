@@ -9,17 +9,14 @@ import json
 def categories(request):
     api = APIS(service_name = "/datathon/info/merchants_categories")
     api.request()
-    response_json = json.loads(api.response.decode('utf-8'))
-    return HttpResponse(json.dumps(response_json), content_type='application/json')
+    return HttpResponse(api.response, content_type='application/json')
 
 def zipcodes(request):
     api = APIS(service_name = "/datathon/info/zipcodes")
     api.request()
-    response_json = json.loads(api.response.decode('utf-8'))
-    return HttpResponse(json.dumps(response_json), content_type='application/json')
+    return HttpResponse(api.response, content_type='application/json')
 
 def tiles(request):
     api = APIS(service_name = "/datathon/info/tiles")
     api.request()
-    response_json = json.loads(api.response.decode('utf-8'))
-    return HttpResponse(json.dumps(response_json), content_type='application/json')
+    return HttpResponse(api.response, content_type='application/json')

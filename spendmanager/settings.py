@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'spendmanager.apps.profiles',
     'spendmanager.apps.dashboard',
+    'spendmanager.apps.zipcode',
 )
 
 MIDDLEWARE_CLASSES = (
