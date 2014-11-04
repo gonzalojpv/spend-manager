@@ -13,12 +13,16 @@ requirejs.config({
 		'views': 'js/src/views'
 	},
 	'shim': {
-		'underscore': {
-			'exports': '_'
-		},
 		'backbone': {
 			'deps': ['jquery', 'underscore'],
 			'exports': 'Backbone'
+		},
+		'underscore': {
+			'exports': '_'
+		},
+		'highcharts': {
+			'deps': ['jquery'],
+			'exports': 'Highcharts'
 		}
 	}
 });
