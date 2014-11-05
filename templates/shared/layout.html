@@ -5,21 +5,13 @@
     <meta charset=UTF-8>
     <link rel="stylesheet" type="text/css" href='{% css_include_tag "flat-ui.min.css" %}' >
     <link rel="stylesheet" type="text/css" href='{% css_include_tag "vendor/bootstrap.min.css" %}' >
-    <link rel="stylesheet/less" type="text/css" href='{% css_include_tag "general.less" %}'> 
-    <link rel="stylesheet/less" type="text/css" href='{% css_include_tag "sizes.less" %}'> 
-    <link rel="stylesheet/less" type="text/css" href='{% css_include_tag "colors.less" %}'> 
-    <link rel="stylesheet/less" type="text/css" href='{% css_include_tag "content.less" %}'> 
     <title>Layout</title>
-    <style>
-      
-    </style>
   </head>
   <body>
     {% include "shared/_header.html" %}
     <div id="name" class="container">
       {% include "shared/_aside.html" %}
       {% block content %} {% endblock %}
-      <div id="chart"></div>
     </div>
     {% include "shared/_footer.html"  %}
     <!--[if lt IE 9] -->

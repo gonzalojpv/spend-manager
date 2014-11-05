@@ -1,0 +1,62 @@
+/** content.css */
+
+.header-section {
+	padding: 5px 0;
+}
+
+.item.selected {
+	background: #0051e0;
+	color: #ffffff;
+}
+
+.breadcrumbs {
+	background: #000000;
+}
+
+.breadcrumbs.item {
+	color: #ffffff;
+	font-size: 12px;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.float-left {
+	float: left;
+}
+
+.clear:after {
+	clear: both;
+}
+
+.center {
+	text-align: center;
+}
+
+.title {
+	width: 800px;
+	font-size: 20px;
+}
+
+.float-right {
+	float: right;
+}
+
+.user.title {
+	font-size: 18px;
+	font-weight: bold;
+	width: auto;
+}
+.user.caption {
+	font-size: 10px;
+}
+
+.left-panel {
+	width: 100px;	
+}
+
+.left-panel li {
+	height: 50px;
+	background: #000;
+}
