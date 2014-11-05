@@ -1,6 +1,0 @@
-// 
-SpendManager = {
-	Models: {},
-	Collections: {},
-	Views: {}
-};

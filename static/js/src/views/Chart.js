@@ -9,16 +9,14 @@ define([
 		defaults: {
 			chartOptions: {}
 		},
+		id: 'chart',
+		chart: null,
 		renderChart: function () {
-			this.destroyChart();
-			this.$('#chart').highcharts(this.options.chartOptions);
 			return this;
 		},
 		destroyChart: function () {
-			debugger;
-			var chart = this.$('#chart').highcharts();
-			if (!!chart) {
-				chart.destroy();
+			if (!!this.chart) {
+				this.chart.destroy();
 			}
 		},
 		close: function () {

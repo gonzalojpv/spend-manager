@@ -4,8 +4,8 @@ define([
 ], function (SpendManagerModel) { 
 	var ChartModel = SpendManagerModel.extend({
 		defaults: {
-			yAxisField: null,
-			xAxisField: null
+			yAxisField: false,
+			xAxisField: false
 		},
 		createAxisData: function (data, axisField) {
 			var _return = [];
@@ -33,7 +33,7 @@ define([
 		parseFromCategories: function (data, categories) {
 			return {
 				categories: [],
-				data: []
+				series: []
 			};
 		}
 	});

@@ -5,56 +5,53 @@ define([
 ], function (ChartView, BarChartModel) {
 	var BarChartView = ChartView.extend({
 		model: null,
+		chart: null,
+		id: 'chart',
 		defaults: (function () {
 			return _.extend({},
 				ChartView.prototype.defaults, { 
 					chartOptions: {
-						chart: {
-				            type: 'column'
-				        },
-				        title: {
+     				   chart: {
+            				type: 'column',
+	    					renderTo: 'chart'
+        				},
+        				title: {
 				            text: null
 				        },
-				        xAxis: {
-				            categories: []
-				        },
-				        yAxis: {
-				            min: 0,
+        				xAxis: {
+            				categories: []
+        				},
+        				credits: {
+        					enabled: false
+        				},
+        				yAxis: {
 				            title: {
-				                text: null
-				            }
-				        },
-				        tooltip: {
-				            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-				            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-				                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-				            footerFormat: '</table>',
-				            shared: true,
-				            useHTML: true
-				        },
-				        legend: {
-				            enabled: false
-				        },
-				        credits: {
-				            enabled: false
-				        },
-				        plotOptions: {
-				            column: {
-				                pointPadding: 0.2,
-				                borderWidth: 0
-				            }
-				        },
-				        series: []
-					},
+				            	text: null 
+            				}
+        				},
+        				legend: {
+        					enabled: false
+        				},
+        				tooltip: {
+            				enabled: false
+        				},
+        				plotOptions: {
+            				column: {
+                				pointPading: 0.2,
+                				borderWidth: 0
+            				}
+        				},
+        				series: [],
+        				colors: ['#7cb5ec']
+    				},
+    				colors: ['#7cb5ec'],
 				    data: [],
 				    enabled: true,
-				    enableTooltip: true,
-				    xAxisTitle: '',
-				    yAxisTitle: '',
-				    xAxisField: null,
-				    yAxisField: null,
-				    template: null,
-				    title: null
+				    showTooltip: true,
+				    xAxisField: '',
+				    yAxisField: '',
+				    title: null,
+				    categories: []
 			    });
 		}()),
 		settings: function () {
@@ -62,27 +59,42 @@ define([
 				model.clear();
 				model = null;
 			}
+			
 			this.model = new BarChartModel();
 			this.setAxis('xAxisField', this.options.xAxisField);
 			this.setAxis('yAxisField', this.options.yAxisField);
 			this.model.set('enabled', this.options.enabled);
 			this.model.on('change', this.render, this);
 
-			this.options.chartOptions.title = this.options.title;
-			this.options.chartOptions.xAxis.title = this.options.xAxisTitle;
-			this.options.chartOptions.yAxis.title = this.options.xAxisTitle;
+			this.options.chartOptions.title.text = this.options.title;
 
 			if (!this.options.showTooltip) {
 				this.options.chartOptions.tooltip = this.options.showTooltip;
 			}
+
+			this.options.chartOptions.renderTo = this.el.getAttribute('id') || 'chart';
 		},
 		setAxis: function (axisField, axisValue) {
 			if (this.model.has(axisField)) {
 				this.model.set(axisField, axisValue);
 			}
 		},
+		renderChart: function () {
+			// this.destroyChart();
+			var data =
+				(this.options.categories.length > 0) ?
+					this.model.parseFromCategories(this.options.data, this.options.categories) :
+					this.model.parseFromData(this.options.data);
+
+			// this.options.chartOptions.colors = this.options.colors;
+			this.options.chartOptions.xAxis.categories = data.categories;
+			this.options.chartOptions.series = data.series;
+
+			this.chart = new Highcharts.Chart(this.options.chartOptions);
+
+			return this;
+		},
 		render: function () {
-			this.options.template = this.options.template || _.template('<div id="chart"></div>');
 			this.renderChart();
 			return this;
 		}

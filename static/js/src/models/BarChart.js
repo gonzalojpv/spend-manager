@@ -14,7 +14,10 @@ define([
 			var yAxisField,
 			i, len, _return = {
 				categories: [],
-				data: []
+				series: [{
+					name: null,
+					data: []
+				}]
 			}, yAxis;
 
 			if (data.length < 1) {
@@ -39,7 +42,8 @@ define([
 					}
 					return false;
 				}).pluck(yAxisField).value();
-				_return.data.push(
+
+				_return.series[0].data.push(
 					(!!yAxis && yAxis.length > 0) ? _.reduce(yAxis, function (memo, value) { 
 							return memo + value; 
 						}) : 0
@@ -51,7 +55,10 @@ define([
 		parseFromData: function (data) {
 			var _return = {
 				categories: [],
-				series: []
+				series: [{
+					data: [],
+					name: null
+				}]
 			},
 			xAxisField, yAxisField,
 			tmp, serie,
@@ -74,16 +81,16 @@ define([
 					return false;
 				}).pluck(yAxisField).value();
 
-				_return.series.push({
-					name: _return.categories[i],
-					data: (tmp.length < 1) ? 0: _.reduce(tmp, function (memo, value) {
+				_return.series[0].data.push(
+					(tmp.length < 1) ? 0: _.reduce(tmp, function (memo, value) {
 						return memo + value;
 					})
-				});
+				);
 
 			}
 			return _return;
 		}
 	});
+	debugger;
 	return BarChartModel;
 });
