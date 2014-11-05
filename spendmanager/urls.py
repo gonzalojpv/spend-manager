@@ -17,4 +17,5 @@ urlpatterns = patterns('',
     (r'^zipcode/', include('spendmanager.apps.zipcode.urls')),
     (r'^', include('spendmanager.apps.profiles.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    (r'^tiles/', include('spendmanager.apps.tiles.urls')),
 )
