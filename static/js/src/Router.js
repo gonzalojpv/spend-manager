@@ -3,8 +3,9 @@ define([
 	'backbone',
 	'views/Menu',
 	'views/GroupCheckbox',
-	'views/BarChart'
-], function (Backbone, MenuView, GroupCheckboxView, BarChartView) {
+	'views/BarChart',
+	'views/PieChart'
+], function (Backbone, MenuView, GroupCheckboxView, BarChartView, PieChartView) {
 	var SpendManagerRouter = (function () {
 		var data = [{ 
 				"name": "Cohen", "salary": 5211 
@@ -27,9 +28,20 @@ define([
  			}],
 			router = Backbone.Router.extend({
 				routes: {
-					'(home)':'barChart',
+					// '(home)':'barChart',
+					'(home)':'pieChart',
 					//'(home)':'groupBox',
 					// '(home)':'menuView',
+				},
+				pieChart: function () {
+					var view = new PieChartView({
+						xAxisField: 'name',
+						yAxisField: 'salary',
+						data: data,
+						title: 'Gender distribution',
+						el: $('#chart')
+					});
+					view.render();
 				},
 				barChart: function () {
 					var view = new BarChartView({

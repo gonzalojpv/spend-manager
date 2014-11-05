@@ -1,5 +1,4 @@
 // BarChart.js
-// Chart.js
 define([
 	'models/Chart'
 ], function (ChartModel) { 
