@@ -29,44 +29,47 @@ define([
 				            }
 				        },
 				        tooltip: {
-				            valueSuffix: '%'
+				            enabled: false
 				        },
 				        series: [{
-				            name: '',
 				            data: [],
 				            size: '80%',
 				            innerSize: '60%'
-				        }]
-				    }
-			    }, 
-			    colors: ['#7cb5ec'],
-			    data: [],
-			    enabled: true,
-			    showTooltip: true,
-			    fieldTitle: '',
-			    categoriesField: null, // (name)
-			    radiusField: null, // value
-			    title: null,
-			    categories: []
-		    });
+				        }],
+				        colors: []
+				    }, 
+				    colors: ['#f00', '#0f0', '#00f'],
+				    data: [],
+				    enabled: true,
+				    showTooltip: true,
+				    categoriesField: null, // (name)
+				    radiusField: null, // value
+				    title: null,
+				    categories: []
+			    });
 		}()),
 		renderChart: function () {
-			// this.destroyChart();
-			var data = this.model.prepareData(this.options.data);
-			this.options.chartOptions.series[0].name = this.options.fieldTitle;
+			this.destroyChart();
 
-			this.chart = new Highcharts.Chart(this.options.chartOptions);
+		    // Create the chart
+		    var data = this.model.prepareData(this.options.data);
+		    this.options.chartOptions.series[0].data = data;
+		    this.options.chartOptions.title.text = this.options.title;
+		    this.options.chartOptions.colors = this.options.colors;
+
+	    	// Create the chart
+	    	this.chart = new Highcharts.Chart(this.options.chartOptions);
 
 			return this;
 		},
 		settings: function () {
 			this.model = new PieChartModel();
 			this.model.set('enabled', this.options.enabled);
-			this.model.on('change', this.render, this);
-
 			this.setAxis('xAxisField', this.options.categoriesField);
 			this.setAxis('yAxisField', this.options.radiusField);
-			this.options.chartOptions.renderTo = this.el.getAttribute('id') || 'chart';
+			this.model.on('change', this.render, this);
+
+			this.options.chartOptions.chart.renderTo = this.el.getAttribute('id') || 'chart';
 		},
 		setAxis: function (axisField, axisValue) {
 			if (this.model.has(axisField)) {

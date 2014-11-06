@@ -8,36 +8,37 @@ define([
 ], function (Backbone, MenuView, GroupCheckboxView, BarChartView, PieChartView) {
 	var SpendManagerRouter = (function () {
 		var data = [{ 
-				"name": "Cohen", "salary": 5211 
+				"name": "Cohen", "salary": 5211, "gender": "male" 
 			}, { 
-				"name": "Compton", "salary": 9695 
+				"name": "Compton", "salary": 9695, "gender": "female"
 			}, { 
-				"name": "Compton", "salary": 8454 
+				"name": "Compton", "salary": 4000, "gender": "unnasigned"
 			}, { 
-				"name": "Blackwell", "salary": 9601 
+				"name": "Blackwell", "salary": 9601, "gender": "female" 
 			}, { 
-				"name": "Blackwell", "salary": 6960 
+				"name": "Blackwell", "salary": 6960, "gender": "male" 
 			}, { 
-				"name": "Blackwell", "salary": 97 
+				"name": "Blackwell", "salary": 97, "gender": "male" 
 			}, { 
-				"name": "Blackwell", "salary": 4789
+				"name": "Blackwell", "salary": 4789, "gender": "female"
 		 	}, { 
-		 		"name": "Jacobs", "salary": 1399
+		 		"name": "Jacobs", "salary": 1399, "gender": "unnasigned"
 	 		}, { 
-	 			"name": "Jacobs", "salary": 8010
+	 			"name": "Jacobs", "salary": 8010, "gender": "female"
  			}],
 			router = Backbone.Router.extend({
 				routes: {
-					// '(home)':'barChart',
-					'(home)':'pieChart',
-					//'(home)':'groupBox',
-					// '(home)':'menuView',
+					 // '(home)':'barChart',
+					 // '(home)':'pieChart',
+					'(home)':'groupBox',
+					//'(home)':'menuView',
 				},
 				pieChart: function () {
 					var view = new PieChartView({
-						xAxisField: 'name',
-						yAxisField: 'salary',
+						categoriesField: 'name',
+						radiusField: 'salary',
 						data: data,
+						colors: ['#f00', '#0f0', '#00f','#000'],
 						title: 'Gender distribution',
 						el: $('#chart')
 					});
@@ -90,7 +91,7 @@ define([
 					$('body').html(view.render().el);
 				},
 				callEvent: function () {
-
+					console.log(arguments);
 				},
 				menuView: function () {
 					var view = new MenuView({

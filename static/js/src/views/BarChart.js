@@ -72,7 +72,7 @@ define([
 				this.options.chartOptions.tooltip = this.options.showTooltip;
 			}
 
-			this.options.chartOptions.renderTo = this.el.getAttribute('id') || 'chart';
+			this.options.chartOptions.chart.renderTo = this.el.getAttribute('id') || 'chart';
 		},
 		setAxis: function (axisField, axisValue) {
 			if (this.model.has(axisField)) {

@@ -12,10 +12,7 @@ define([
 			});
 		}()),
 		prepareData: function (data) {
-			var _return = {
-                categories: [],
-                data: []
-			}, i, len, xAxisField, yAxisField, tmp;
+			var _return = [], i, len, xAxisField, yAxisField, tmp;
 
 			if (data.length < 1) {
 				return _return;
@@ -34,22 +31,23 @@ define([
 				return _return;
 			}
 
-			_return.categories = xAxisValues = _.chain(data).map(function (value) {
+			xAxisValues = _.chain(data).map(function (value) {
 				return value[xAxisField]; 
 			}).uniq().value();
 
 			for (i = 0, len = xAxisValues.length; i < len; i+=1) {	
 				yAxisValues = _.chain(data).filter(function (value) {
-					return _.contains(xAxisValues, value[xAxisField]);
+					return xAxisValues[i] === value[xAxisField];
 				}).pluck(yAxisField).uniq().value();
 
-				_return.data.push(
-					(!!yAxisValues && yAxisValues.length > 0) ?
-						_.reduce(yAxisField, function (memo, value) {
+				_return.push({
+					y: (!!yAxisValues && yAxisValues.length > 0) ?
+						_.reduce(yAxisValues, function (memo, value) {
 							return memo + value;
 						}) :	
-						0
-				);
+						0,
+					name: xAxisValues[i]
+				})
 			}
 
 			return _return;
