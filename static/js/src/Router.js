@@ -28,9 +28,9 @@ define([
  			}],
 			router = Backbone.Router.extend({
 				routes: {
-					 // '(home)':'barChart',
-					 // '(home)':'pieChart',
-					'(home)':'groupBox',
+					// '(home)':'barChart',
+					'(home)':'pieChart',
+					// '(home)':'groupBox',
 					//'(home)':'menuView',
 				},
 				pieChart: function () {
