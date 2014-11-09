@@ -1,0 +1,7 @@
+/** maps.css **/
+
+#map-canvas {
+	display: inline-block;
+	height: 680px;
+	width: 1024px;
+}
