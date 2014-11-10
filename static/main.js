@@ -9,10 +9,12 @@ requirejs.config({
 		'underscore': 'js/vendor/underscore.min',
 		'backbone': 'js/vendor/backbone.min',
 		'async': 'js/vendor/require-async.src',
+		'text': 'js/vendor/require-text.src',
 		'less': 'js/vendor/less.min',
 		'models': 'js/src/models',
 		'collections': 'js/src/collections',
-		'views': 'js/src/views'
+		'views': 'js/src/views',
+		'utils': 'js/src/utils'
 	},
 	'shim': {
 		'underscore': {

@@ -1,11 +1,13 @@
 // app.js
 define([
 	'backbone',
-	'app/Router',
+	'app/Router'
 ], function (Backbone, Router) {
 	function Application () {
 		this.start = function () {
 			Backbone.history.start();
+
+			
 		};
 	};
 	var application = new Application();
