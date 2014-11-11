@@ -9,7 +9,7 @@ define([
 	var ClusterCollection = SpendManagerCollection.extend({
 		model: MarkerModel,
 		prepareData: function (data, latitudeField, longitudeField) {
-			debugger;
+			
 			if ('undefined' === typeof latitudeField) {
 				latitudeField = null;
 			}
@@ -37,6 +37,18 @@ define([
 				this.add(model);
 			}
 			return this;
+		},
+		createClusters: function (callback) {
+			var data = this.clone().toJSON(),
+			callback = callback || function (value) {
+				return value.longitude;
+			}, _return = _.chain(data).groupBy(callback).value(),
+			flag;
+
+			flag = _.filter(_return, function (value) {
+				return !!value.length && value.length > 1;
+			})
+			return flag.length > 0 ? _return : data;
 		}
 	});
 	return ClusterCollection;

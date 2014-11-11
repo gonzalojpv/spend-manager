@@ -44,6 +44,9 @@ define([
 						this.options.latitudeField,
 						this.options.longitudeField
 					);
+					debugger;
+					var info = this.collection.createClusters();
+					console.log(info);
 				}
 			}
 		},
