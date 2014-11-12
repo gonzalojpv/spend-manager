@@ -13,11 +13,11 @@ define([
 			map: null
 		},
 		createMarker: function () {
-			debugger;
 			var longitude = this.get('longitude'),
 			latitude = this.get('latitude'),
 			latLng = MapUtils.latitudeLongitudeToMaps(
-				longitude, latitude
+				latitude,
+				longitude
 			);
 			return new google.maps.Marker({
 				position: latLng
