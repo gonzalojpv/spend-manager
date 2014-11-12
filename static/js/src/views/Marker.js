@@ -29,15 +29,8 @@ define([
 			this.model.on('change', this.render, this);
 		},
 		render: function () {
-			var position = SpendMangerMapUtils.latitudeLongitudeToMaps(
-				this.model.get('latitude'),
-				this.model.get('longitude')
-			);
-
 			// Make a marker
-			this.marker = new google.maps.Marker({
-				position: position
-			})
+			this.marker = this.model.createMarker();
 			this.marker.setMap(this.options.map);
 
 			return this;

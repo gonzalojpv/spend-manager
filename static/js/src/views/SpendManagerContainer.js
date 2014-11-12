@@ -4,7 +4,12 @@ define([
 	'views/SpendManager'
 ], function (_, SpendManagerView) { 
 	var SpendManagerContainerView = SpendManagerView.extend({
-		childViews: [],
+		childViews: {},
+		initialize: function (options) {
+			SpendManagerView.prototype.initialize.call(this, options);
+			this.childViews = {};
+			this.settings();
+		},	
 		deleteViews: function () {
 			var key;
 			for (key in this.childViews) {

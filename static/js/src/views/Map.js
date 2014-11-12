@@ -5,14 +5,13 @@ define([
 	'models/Map',
 	'collections/Cluster',
 	'views/Marker',
-	'utils/Map',
-	'async!http://maps.google.com/maps/api/js?key=AIzaSyBv9g2E3zOExwUXytncGeumsU9xF9ChM10&sensor=false'
-], function (SpendManagerContainerView, MapModel, ClusterCollection, MarkerView, SpendManagerMapUtils) {
+	'views/Cluster',
+	'utils/Map'
+], function (SpendManagerContainerView, MapModel, ClusterCollection, MarkerView, ClusterView, SpendManagerMapUtils) {
 	var MapView = SpendManagerContainerView.extend({
 		map: null,
 		collection: null,
 		id: 'map',
-		childViews: {},
 		defaults: {
 			latitude: null,
 			longitude: null,
@@ -28,32 +27,49 @@ define([
 			this.model.set('latitude', this.options.latitude);
 			this.model.on('change:longitude change:latitude', this.render, this);
 		},
-		drawMarkers: function () {
+		setMarkers: function () {
 			var i,
 			len = this.options.data.length,
-			cid,
+			info,
 			data;
 
 			if (len > 0) {
 				if (!this.collection) {
 					this.collection = new ClusterCollection();
-					this.collection.on('add', this.addMarkers, this);
 
 					data = this.collection.prepareData(
 						this.options.data,
 						this.options.latitudeField,
 						this.options.longitudeField
 					);
-					debugger;
-					var info = this.collection.createClusters();
-					console.log(info);
+
+					info = this.collection.groupMarkers(
+						this.map,
+						this.options.latitudeField,
+						this.options.longitudeField
+					);
+					for (i = 0, len = info.length; i < len; i += 1) {
+						if (!!info[i].models) {
+							this.drawCluster(info[i].toJSON());
+						} else {
+							this.drawMarker(info[i]);
+						}
+					}
 				}
 			}
 		},
-		addMarkers: function (model) {
+		drawMarker: function (model) {
 			cid = _.uniqueId();
 			this.childViews[cid] = new MarkerView({
 				model: model,
+				map: this.map
+			});
+			this.childViews[cid].render();
+		},
+		drawCluster: function (data) {
+			cid = _.uniqueId();
+			this.childViews[cid] = new ClusterView({
+				data: data,
 				map: this.map
 			});
 			this.childViews[cid].render();
@@ -73,7 +89,7 @@ define([
 			});
 			this.map.setCenter(position);
 
-			this.drawMarkers();
+			this.setMarkers();
 
 			return this;
 		}

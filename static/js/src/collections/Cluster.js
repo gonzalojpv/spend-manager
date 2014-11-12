@@ -8,6 +8,12 @@ define([
 ], function (_, Backbone, SpendManagerCollection, MarkerModel) { 
 	var ClusterCollection = SpendManagerCollection.extend({
 		model: MarkerModel,
+		createMarkers: function () {
+			this.each(function (model) {
+				model.set('map', model.createMarker());
+			});
+			return this;
+		},
 		prepareData: function (data, latitudeField, longitudeField) {
 			
 			if ('undefined' === typeof latitudeField) {
@@ -38,17 +44,32 @@ define([
 			}
 			return this;
 		},
-		createClusters: function (callback) {
+		groupMarkers: function (latitudeField, longitudeField, callback) {
 			var data = this.clone().toJSON(),
 			callback = callback || function (value) {
 				return value.longitude;
-			}, _return = _.chain(data).groupBy(callback).value(),
-			flag;
+			}, groupedData = _.chain(data).groupBy(callback).value(),
+			_return = [],
+			tmp,
+			i, len, key;
 
-			flag = _.filter(_return, function (value) {
-				return !!value.length && value.length > 1;
-			})
-			return flag.length > 0 ? _return : data;
+			for (key in groupedData) {
+				if (groupedData.hasOwnProperty(key)) {
+					if (!!tmp) {
+						tmp = null;
+					}
+					if (groupedData[key].length <= 1) {
+						tmp = new MarkerModel();
+						tmp.set(groupedData[key][0]);
+					} else {
+						tmp = new ClusterCollection();
+						tmp.prepareData(groupedData[key]);
+					}
+					_return.push(tmp);
+				}
+			}
+
+			return _return;
 		}
 	});
 	return ClusterCollection;
