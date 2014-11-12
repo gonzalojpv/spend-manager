@@ -1,9 +1,12 @@
 /** maps.css **/
 
+.map-container {
+  display: inline-block;
+  width: 1024px;
+  height: 680px;
+}
+
 #map-canvas {
-	display: inline-block;
-	height: 680px;
-	width: 1024px;
 }
 
 .pin {

@@ -14,7 +14,8 @@ requirejs.config({
 		'models': 'js/src/models',
 		'collections': 'js/src/collections',
 		'views': 'js/src/views',
-		'utils': 'js/src/utils'
+		'utils': 'js/src/utils',
+		'cluster': 'js/vendor/markerclusterer.min'
 	},
 	'shim': {
 		'underscore': {

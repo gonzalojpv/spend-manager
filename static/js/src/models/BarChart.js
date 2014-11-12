@@ -90,6 +90,6 @@ define([
 			return _return;
 		}
 	});
-	debugger;
+	
 	return BarChartModel;
 });

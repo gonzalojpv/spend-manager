@@ -32,11 +32,17 @@ define([
 			}, { 
 				"lat": 19.178, "long": -96.162, "name": "Blackwell", "salary": 97, "gender": "male" 
 			}, { 
-				"lat": 20.089, "long": -98.746,"name": "Blackwell", "salary": 4789, "gender": "female"
+				"lat": 19.320, "long": -99.152,"name": "Blackwell", "salary": 4789, "gender": "female"
 		 	}, { 
 		 		"lat": 19.320, "long": -99.152, "name": "Jacobs", "salary": 1399, "gender": "unnasigned"
 	 		}, { 
 	 			"lat": 21.959, "long": -102.345,"name": "Jacobs", "salary": 8010, "gender": "female"
+ 			}, { 
+	 			"lat": 21.959, "long": -102.345,"name": "Jacobs", "salary": 8011, "gender": "female"
+ 			},{ 
+	 			"lat": 21.959, "long": -102.345,"name": "Jacobs", "salary": 801, "gender": "male"
+ 			},{ 
+	 			"lat": 21.959, "long": -102.345,"name": "Jacobs", "salary": 1010, "gender": "unnasigned"
  			}],
 			router = Backbone.Router.extend({
 				routes: {
