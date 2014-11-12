@@ -1,22 +1,22 @@
 //Router.js
 define([
-	'backbone',
+	'backbone'
 	/*/
 	'views/Menu',
 	'views/GroupCheckbox',
 	'views/BarChart',
 	'views/PieChart', 
-	/**/
 	'views/Map'
+	/**/
 ], function (
-	Backbone,
+	Backbone
 	/*/
 	MenuView,
 	GroupCheckboxView,
 	BarChartView,
 	PieChartView,
-	/**/
 	MapView
+	/**/
 ) {
 	var SpendManagerRouter = (function () {
 		var data = [{ 
@@ -46,14 +46,10 @@ define([
  			}],
 			router = Backbone.Router.extend({
 				routes: {
-					// '(home)':'barChart',
-					//'(home)':'pieChart',
-					'(home)': 'home',
-					// '(home)':'groupBox',
-					//'(home)':'menuView',
+					'(home)': 'home'
 				},
 				home: function () {
-					this.maps();
+					
 				},
 				maps: function () {
 					var view = new MapView({
@@ -66,7 +62,6 @@ define([
 					});
 					view.render();
 				},
-				/*/
 				pieChart: function () {
 					var view = new PieChartView({
 						categoriesField: 'name',
@@ -143,7 +138,6 @@ define([
 					view.on('itemSelected', this.callEvent, this);
 					$('body').append(view.render().el);
 				}
-				/**/
 			});
 		return new router();
 	}());
