@@ -1,22 +1,10 @@
 //Router.js
 define([
-	'backbone'
-	/*/
-	'views/Menu',
-	'views/GroupCheckbox',
-	'views/BarChart',
-	'views/PieChart', 
-	'views/Map'
-	/**/
+	'backbone',
+	'views/Range'
 ], function (
-	Backbone
-	/*/
-	MenuView,
-	GroupCheckboxView,
-	BarChartView,
-	PieChartView,
-	MapView
-	/**/
+	Backbone,
+	RangeView
 ) {
 	var SpendManagerRouter = (function () {
 		var data = [{ 
@@ -49,94 +37,15 @@ define([
 					'(home)': 'home'
 				},
 				home: function () {
+					this.range();
+				},
+				range: function () {
 					
-				},
-				maps: function () {
-					var view = new MapView({
-						latitude: -34.397,
-						longitude: 150.644,
-						data: data,
-						latitudeField: "lat",
-						longitudeField: "long",
-						el: $('#map-canvas')
-					});
-					view.render();
-				},
-				pieChart: function () {
-					var view = new PieChartView({
-						categoriesField: 'name',
-						radiusField: 'salary',
-						data: data,
-						colors: ['#f00', '#0f0', '#00f','#000'],
-						title: 'Gender distribution',
-						el: $('#chart')
-					});
-					view.render();
-				},
-				barChart: function () {
-					var view = new BarChartView({
-						xAxisField: 'name',
-						yAxisField: 'salary',
-						data: data,
-						title: 'Year',
-						xAxisTitle: 'Names',
-						yAxisTitle: 'Salaries',
-						categories: [{
-							name: 'Less than 4000',
-							callback: function (value) {
-								return value < 4000;
-							}
-						}, {
-							name: 'Equal to 4000',
-							callback: function (value) {
-								return 1000 === value;
-							}
-						}, {
-							name: 'Greater than 4000',
-							callback: function (value) {
-								return value > 4000;
-							}
-						}],
-						el: $('#chart')
-					});
-					view.render();
-				},
-				groupBox: function () {
-					var view = new GroupCheckboxView({
-						data: [{
-							value: 0,
-							isSelected: true,
-							spriteClass: 'first-sprite',
-							title: 'Primera opción'
-						}, {
-							value: 1,
-							spriteClass: 'second-sprite',
-							title: 'Segunda opción'
-						}],
-						title: 'Menú'
-					});
-					view.on('itemsChanged', this.callEvent, this);
-					$('body').html(view.render().el);
+					var view = new RangeView();
+					$('body').append(view.render().el);
 				},
 				callEvent: function () {
 					console.log(arguments);
-				},
-				menuView: function () {
-					var view = new MenuView({
-						data: [{
-							value: 0,
-							isSelected: true,
-							spriteClass: 'first-sprite',
-							title: 'Primera opción'
-						}, {
-							value: 1,
-							spriteClass: 'second-sprite',
-							title: 'Segunda opción'
-						}],
-						title: 'Menú'
-					});
-					view.on('itemSelected', this.callEvent, this);
-					$('body').append(view.render().el);
 				}
 			});
 		return new router();

@@ -5,20 +5,16 @@
     <meta charset=UTF-8>
     <link rel="stylesheet" type="text/css" href='{% css_include_tag "flat-ui.min.css" %}' >
     <link rel="stylesheet" type="text/css" href='{% css_include_tag "vendor/bootstrap.min.css" %}' >
-    <link rel="stylesheet" type="text/css" href='{% css_include_tag "maps.css" %}' >
+    <link rel="stylesheet/less" type="text/css" href='{% css_include_tag "main.less" %}' >
     <title>Layout</title>
   </head>
   <body>
-    {% include "shared/_header.html" %}
-    <div id="name" class="container">
-      {% include "shared/_aside.html" %}
-      {% block content %} {% endblock %}
-    </div>
-    {% include "shared/_footer.html"  %}
-    <!--[if lt IE 9] -->
-      <script src="../../static/js/vendor/html5shiv.js"></script>
-      <script src="../../static/js/vendor/respond.min.js"></script>    
-    <!--[endif] -->
-    <script data-main="../../static/main" src="../../static/js/vendor/require.min.js"></script>
+      <div id="map-canvas" class="map-container"></div>
+      <div id="chart"></div>
+      <!--[if lt IE 9] -->
+        <script src="../../static/js/vendor/html5shiv.js"></script>
+        <script src="../../static/js/vendor/respond.min.js"></script>    
+      <!--[endif] -->
+      <script data-main="../../static/main" src="../../static/js/vendor/require.min.js"></script>
   </body>
 </html>
