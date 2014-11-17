@@ -1,0 +1,6 @@
+// 
+SpendManager = {
+	Models: {},
+	Collections: {},
+	Views: {}
+};
