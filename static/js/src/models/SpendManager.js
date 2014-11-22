@@ -34,12 +34,14 @@ define([
 							if (!!tmp) {
 								values[i] = tmp.toString(16);
 							}
+					case 'numeric':
+							values[i] = Math.ceil(values[i]);
 						break;
 
 				}
 			}
 
-			return values;
+			return 1 === values.length ? values[0] : values;
 		}
 	});
 	return SpendManagerModel;

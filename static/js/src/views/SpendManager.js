@@ -10,7 +10,7 @@ define([
 			caption: null
 		},
 		initialize: function (options) {
-			
+			console.log(options);
 			this.options = _.extend({}, this.defaults, options);
 			this.settings();
 		},
