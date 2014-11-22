@@ -30,13 +30,10 @@ class APIS(object):
         conn.request(self.method, url, None, self.headers)
         
         r = conn.getresponse()
-        print(r.status)
+        print(url)
 
-        if int(r.status) == 200:
-            self.response = r.read()
-            self.convert_json()
-        else:
-            print("Error!")
+        self.response = r.read()
+        self.convert_json()
 
     def convert_json(self):
         response_json = json.loads(self.response.decode('utf-8'))
