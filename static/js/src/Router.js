@@ -45,7 +45,7 @@ define([
 					view.on('rangeChange', this.callEvent, this);
 				},
 				callEvent: function () {
-					console.log(arguments);
+
 				}
 			});
 		return new router();
