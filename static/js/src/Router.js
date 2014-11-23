@@ -1,10 +1,10 @@
 //Router.js
 define([
 	'backbone',
-	'views/Range'
+	'views/Menu'
 ], function (
 	Backbone,
-	RangeView
+	MenuView
 ) {
 	var SpendManagerRouter = (function () {
 			router = Backbone.Router.extend({
@@ -37,15 +37,32 @@ define([
 		 			"lat": 21.959, "long": -102.345,"name": "Jacobs", "salary": 1010, "gender": "unnasigned"
 	 			}],
 				home: function () {
-					this.range();
+					this.menu();
+				},
+				menu: function () {
+					var menu = new MenuView({
+						data: [{
+							value: 1,
+							title: 'Uno'
+						}, {
+							value: 2,
+							title: 'Dos'
+						}, {
+							value: 3,
+							title: 'Tres'
+						}],
+					});
+					menu.on('itemSelected', this.callEvent, this);
+					$('body').append(menu.render().el);
 				},
 				range: function () {
+					/*/
 					var view = new RangeView();
 					$('body').append(view.render().el);
-					view.on('rangeChange', this.callEvent, this);
+					view.on('rangeChange', this.callEvent, this); /**/
 				},
 				callEvent: function () {
-
+					console.log(arguments);
 				}
 			});
 		return new router();

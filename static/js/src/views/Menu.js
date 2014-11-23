@@ -4,8 +4,7 @@ define([
 	'views/SpendManagerContainer',
 	'collections/Menu',
 	'views/MenuItem'
-], function (_, SpendManagerContainerView, MenuCollection,
-	MenuItemView) { 
+], function (_, SpendManagerContainerView, MenuCollection, MenuItemView) { 
 	var MenuView = SpendManagerContainerView.extend({
 		childViews: [],
 		collection: null,
@@ -17,6 +16,7 @@ define([
 			field: null
 		},
 		settings: function () {
+			debugger;
 			if (null === this.collection) {
 				this.collection = new MenuCollection();
 				this.collection.on('add', this.addItem, this);
