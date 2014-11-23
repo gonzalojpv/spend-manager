@@ -1,5 +1,5 @@
 import urllib
-import http.client
+import httplib
 import base64
 import json
 
@@ -23,8 +23,8 @@ class APIS(object):
         }
 
     def request(self):
-        params = urllib.parse.urlencode(self.params)
-        conn = http.client.HTTPSConnection(self.url)
+        params = urllib.urlencode(self.params)
+        conn = httplib.HTTPSConnection(self.url)
         url = self.service_name +"?%s"%params
 
         conn.request(self.method, url, None, self.headers)
