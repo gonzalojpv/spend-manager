@@ -3,22 +3,72 @@
   <head>
 
     <meta charset=UTF-8>
-    <link rel="stylesheet" type="text/css" href='{% css_include_tag "flat-ui.min.css" %}' >
-    <link rel="stylesheet" type="text/css" href='{% css_include_tag "vendor/bootstrap.min.css" %}' >
-    <link rel="stylesheet" type="text/css" href='{% css_include_tag "maps.css" %}' >
+
     <title>Layout</title>
   </head>
   <body>
-    {% include "shared/_header.html" %}
-    <div id="name" class="container">
-      {% include "shared/_aside.html" %}
-      {% block content %} {% endblock %}
-    </div>
-    {% include "shared/_footer.html"  %}
-    <!--[if lt IE 9] -->
+
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <title>Predicciones de Gastos</title>
+    <link rel="stylesheet" type="text/css" href='{% css_include_tag "flat-ui.min.css" %}' >
+    <link rel="stylesheet" type="text/css" href='{% css_include_tag "vendor/bootstrap.min.css" %}' >
+    <link rel="stylesheet/less" type="text/css" href='{% css_include_tag "main.less" %}' >
+  </head>
+  <body>
+    <header>
+      <div class="header-top clearfix">
+        <ul>
+          <li class="floatLeft">
+            <button type="button" class="icon-navbar"></button>
+          </li>
+          <li class="floatLeft">
+            <img src="" class="icon-avatar floatLeft"/>
+            <ul class="inline-block floatLeft">
+              <li class="user-name">Juan Pérez</li>
+              <li class="assignment">Colaborador</li>
+            </ul>         
+          </li>
+          <li class="header-title floatLeft">
+            <h1 class="">Estadísticas</h1>
+          </li>
+          <li class="floatRight">
+            <button type="button" class="icon-add">+</button>
+          </li>
+        </ul>             
+      </div>
+
+      <div class="header-breadcrums clearfix">
+        <ul>
+          <li class="floatLeft breadcrums">
+            <i class="icon-inicio"></i>
+            <label>Inicio</label>
+          </li>
+          <li class="floatRight">
+            <input type="search">
+          </li>
+        </ul>
+      </div>
+      
+    </header>
+    <aside class="leftPanel">
+      <nav>
+        <ul>
+          <li class="tab-home selected"><a href="#">Inicio</a></li>
+          <li class="tab-calendar"><a href="#">Calendario</a></li>
+          <li class="tab-email"><a href="#">Correos</a></li>
+        </ul>
+      </nav>
+    </aside>
+      <!--[if lt IE 9] -->
       <script src="../../static/js/vendor/html5shiv.js"></script>
       <script src="../../static/js/vendor/respond.min.js"></script>    
-    <!--[endif] -->
-    <script data-main="../../static/main" src="../../static/js/vendor/require.min.js"></script>
+      <!--[endif] -->
+      <script data-main="../../static/main" src="../../static/js/vendor/require.min.js"></script>
   </body>
 </html>

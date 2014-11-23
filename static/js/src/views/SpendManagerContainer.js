@@ -6,9 +6,8 @@ define([
 	var SpendManagerContainerView = SpendManagerView.extend({
 		childViews: {},
 		initialize: function (options) {
-			SpendManagerView.prototype.initialize.call(this, options);
 			this.childViews = {};
-			this.settings();
+			SpendManagerView.prototype.initialize.call(this, options);
 		},	
 		deleteViews: function () {
 			var key;
