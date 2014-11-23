@@ -162,7 +162,7 @@ header {
 	color: #0099f1;
 	font-size: 18px;
 }
-.wrapper-map .map {
+.wrapper-map .map-chart {
 	width: 460px;
 	height: 210px;
 }
@@ -177,4 +177,15 @@ header {
 }
 .wrapper + .wrapper {
 	margin-left: 20px;
+}
+.age-chart {
+	width: 460px;
+	height: 230px;
+}
+.gender-chart {
+	background-color: ;
+	width: 430px;
+	height: 230px;
+	background-color: #4b4d52;
+	opacity: .1;
 }
