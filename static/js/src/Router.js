@@ -38,6 +38,7 @@ define([
 	 			}],
 				home: function () {
 					// this.menu();
+          alert("Hoem");
 				},
 				menu: function () {
 					var menu = new MenuView({

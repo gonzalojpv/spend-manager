@@ -101,7 +101,7 @@ def cards_cube(request):
     return HttpResponse(api.response, content_type = "application/json")
 
 def payments_cube(request):
-    #
+    #http://localhost:8000/zipcode/payments_cube/?zipcode=15390&date_min=20140101&date_max=20140331&group_by=month
     helper = Helper()
     helper.parse_params(request.GET, ["date_min", "date_max", "group_by"])
 
