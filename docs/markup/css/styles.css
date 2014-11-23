@@ -30,6 +30,10 @@
 body {
 	min-width: 1024px;
 	height: 100%;
+	background: url(../img/background.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 body * {
 	box-sizing: border-box; 
@@ -41,6 +45,11 @@ header {
 	background: #0099f1;
 	color: white;
 	font-family: Arial;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1000;
 }
 .header-top {
 	padding: 4px 10px;
@@ -141,3 +150,31 @@ header {
 .tab-home { background-position: 0 -120px;}
 .tab-calendar { background-position: 0 -190px;}
 .tab-email { background-position: 0 -260px;}
+
+/************************** End Left Panel Menu **************************/
+
+/************************** Content ************************/
+.content {
+	margin: 106px 0 0 75px;
+	padding: 20px;
+}
+.content h2 {
+	color: #0099f1;
+	font-size: 18px;
+}
+.wrapper-map .map {
+	width: 460px;
+	height: 210px;
+}
+.pays-chart, .categories-chart {
+	background-color: #4b4d52;
+	opacity: .1;
+	width: 206px;
+	height: 342px;
+}
+.wrapper {
+	float: left;
+}
+.wrapper + .wrapper {
+	margin-left: 20px;
+}

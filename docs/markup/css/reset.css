@@ -20,11 +20,17 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+html{
+  height: 100%;
+}
 body {
 	line-height: 1;
 	position: relative;
 	height: 100%;
+	min-height: 100%;
 	margin: 0;
+	font-family: Arial;
+	color: #4b4d52;
 }
 ol, ul {
 	list-style: none;
