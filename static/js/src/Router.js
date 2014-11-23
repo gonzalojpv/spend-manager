@@ -1,10 +1,12 @@
 //Router.js
 define([
 	'backbone',
-	'views/Menu'
+	'views/Menu',
+  'views/Home'
 ], function (
 	Backbone,
-	MenuView
+	MenuView,
+  Home
 ) {
 	var SpendManagerRouter = (function () {
 			router = Backbone.Router.extend({
@@ -38,7 +40,7 @@ define([
 	 			}],
 				home: function () {
 					// this.menu();
-          alert("Hoem");
+          new Home;
 				},
 				menu: function () {
 					var menu = new MenuView({

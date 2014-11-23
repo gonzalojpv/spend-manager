@@ -56,7 +56,7 @@ ROOT_URLCONF = 'spendmanager.urls'
 
 WSGI_APPLICATION = 'spendmanager.wsgi.application'
 
-STATIC_PATH = os.path.join(PROJECT_PATH, 'spendmanager','static')
+STATIC_PATH = os.path.join(PROJECT_PATH, 'spend-manager','static')
 
 # Additional locations of static files
 STATICFILES_DIRS = (
