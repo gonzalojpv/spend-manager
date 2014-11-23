@@ -16,7 +16,7 @@ define([
 			field: null
 		},
 		settings: function () {
-			debugger;
+			
 			if (null === this.collection) {
 				this.collection = new MenuCollection();
 				this.collection.on('add', this.addItem, this);
@@ -28,6 +28,7 @@ define([
 			);
 		},
 		addItem: function (model) {
+			
 			var view = new MenuItemView({
 				model: model
 			})
