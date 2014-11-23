@@ -9,4 +9,4 @@ def css_include_tag(css):
 
 @register.simple_tag
 def javascript_include_tag(js):
-	return "%s%s%s" % (settings.STATIC_URL, 'js/', js)
+	return "%s%s%s" % (settings.STATIC_URL, 'js/vendor/', js)
