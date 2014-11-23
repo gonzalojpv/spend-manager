@@ -37,7 +37,7 @@ define([
 		 			"lat": 21.959, "long": -102.345,"name": "Jacobs", "salary": 1010, "gender": "unnasigned"
 	 			}],
 				home: function () {
-					this.menu();
+					// this.menu();
 				},
 				menu: function () {
 					var menu = new MenuView({
