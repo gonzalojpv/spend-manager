@@ -24,9 +24,12 @@ body {
 	line-height: 1;
 	position: relative;
 	height: 100%;
+	margin: 0;
 }
 ol, ul {
 	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 blockquote, q {
 	quotes: none;

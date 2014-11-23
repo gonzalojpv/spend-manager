@@ -65,6 +65,7 @@ header {
 }
 .header-title h1 {	
 	font: normal 24px Arial;
+	margin: 0;
 }
 .breadcrums {
 	margin: 5px 0 0 0;
