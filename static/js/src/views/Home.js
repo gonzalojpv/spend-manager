@@ -4,11 +4,19 @@ define([
     'backbone'
 ], function($, _, Backbone){
   var AppHome = Backbone.View.extend({
-    el: "Home",
-
+    
+    el:$("body"),
+    
+    events: {
+      "click #btn-filters": "showFilters"
+    },
     initialize: function(){
       console.log("init");
-    }
+    },
+    showFilters: function(e){
+      console.log(e.currentTarget);
+    }    
   });
+
   return AppHome;
 });
