@@ -38,6 +38,7 @@ body {
 body * {
 	box-sizing: border-box; 
 }
+.none { display: none;}
 /************************** End General Classes ***************************/
 
 /************************** Header **************************/
@@ -101,7 +102,7 @@ header {
 	margin-top: 3px;
 }
 .icon-navbar { background-position: 0 0;}
-.icon-search { 
+.icon-search {
 	background-position: 0 -40px;
 	position: absolute;
 	right: 0;
@@ -109,6 +110,14 @@ header {
 	margin: 0
 }
 .icon-filters { background-position: 0 -80px;}
+.icon-date {
+	background-position: -40px -40px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 13px 15px 0 0;;
+}
+.icon-flow {background-position: -40px -80px;}
 
 [class^="iconSmall-"], [class*=" iconSmall-"] {
 	height: 24px;
@@ -118,7 +127,7 @@ header {
 }
 .iconSmall-breadHome { background-position: -40px 0;}
 .search { position: relative;}
-.search input {
+.search input, select {
 	border: 1px solid #8C8F97;
 	border-radius: 4px;
 	padding: 4px 8px;
@@ -189,3 +198,52 @@ header {
 	background-color: #4b4d52;
 	opacity: .1;
 }
+.row + .row {
+	margin: 10px 0 0 0;
+}
+/************************** End Content ************************/
+
+/************************** Content ************************/
+.filters-panel {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	margin: 56px 0 0 0;
+	width: 300px;
+	background-color: white;
+	box-shadow: -2px 0 12px rgba(80,80,80, .5);
+	z-index: 2000;
+}
+.filters-panel li {
+	border-bottom: 1px solid #d8dadb;
+	position: relative;
+	padding: 15px;
+}
+.header-top ul li .filters-panel li {
+	margin: 0;
+}
+.filters-panel input,
+.filters-panel select{
+	border-color: #8d9097;
+}
+/************************** End Content ************************/
+
+/************************** Other Stats ************************/
+.other-stats {	
+	text-align: center;
+	
+}
+.other-stats li {
+	max-width: 140px;
+	float: left;
+}
+.other-stats li h3 {
+	margin: 2px 0;
+}
+.other-stats li h4 {
+	font: normal 10px Arial;
+	text-transform: uppercase;
+	margin: 0;
+}
+/************************** End Other Stats ************************/
