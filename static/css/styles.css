@@ -115,7 +115,6 @@ header {
 	position: absolute;
 	top: 0;
 	right: 0;
-	margin: 13px 15px 0 0;;
 }
 .icon-flow {background-position: -40px -80px;}
 
@@ -226,6 +225,9 @@ header {
 .filters-panel input,
 .filters-panel select{
 	border-color: #8d9097;
+}
+.filters-panel [class^="icon-"], .filters-panel [class*=" icon-"] {
+	margin: 13px 15px 0 0;
 }
 /************************** End Content ************************/
 

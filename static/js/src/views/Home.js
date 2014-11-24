@@ -11,10 +11,10 @@ define([
       "click #btn-filters": "showFilters"
     },
     initialize: function(){
-      console.log("init");
+      
     },
     showFilters: function(e){
-      console.log(e.currentTarget);
+     this.$el.find("#filters").toggleClass("none");
     }    
   });
 

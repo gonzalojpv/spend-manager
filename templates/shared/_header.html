@@ -15,8 +15,8 @@
 						<h1 class="">Estadísticas</h1>
 					</li>
 					<li class="floatRight">
-						<button type="button" class="icon-filters"></button>
-						<ul class="filters-panel none">
+						<button type="button" class="icon-filters" id="btn-filters"></button>
+						<ul class="filters-panel none" id="filters">
 							<li class="filter-datemin search">
 								<input type="search" placeholder="Fecha Mínima"/>
 								<i class="icon-date"></i>
@@ -27,12 +27,14 @@
 							</li>
 							<li class="filter-groupby">
 								<select>Agrupados por
-									<option>Option 1</option>
-									<option>Option 2</option>
+									<option value="day">Day</option>
+									<option value="week">Week</option>
+                  <option value="month">Month</option>
 								</select>								
 							</li>
 							<li class="filter-categories search">
 								<input type="search" placeholder="Categorias"/>
+								<i class="icon-search"></i>
 							</li>
 						</ul>
 					</li>
