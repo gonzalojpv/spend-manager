@@ -1,4 +1,4 @@
-<header>
+		<header>
 			<div class="header-top clearfix">
 				<ul>
 					<li class="floatLeft">
@@ -15,7 +15,26 @@
 						<h1 class="">Estadísticas</h1>
 					</li>
 					<li class="floatRight">
-						<button type="button" class="icon-filters" id="btn-filters"></button>
+						<button type="button" class="icon-filters"></button>
+						<ul class="filters-panel none">
+							<li class="filter-datemin search">
+								<input type="search" placeholder="Fecha Mínima"/>
+								<i class="icon-date"></i>
+							</li>
+							<li class="filter-datemax search">
+								<input type="search" placeholder="Fecha Máxima"/>
+								<i class="icon-date"></i>
+							</li>
+							<li class="filter-groupby">
+								<select>Agrupados por
+									<option>Option 1</option>
+									<option>Option 2</option>
+								</select>								
+							</li>
+							<li class="filter-categories search">
+								<input type="search" placeholder="Categorias"/>
+							</li>
+						</ul>
 					</li>
 				</ul>							
 			</div>
@@ -31,5 +50,6 @@
 						<i class="icon-search"></i>
 					</li>
 				</ul>
-			</div>			
-</header>
+			</div>
+			
+		</header>
